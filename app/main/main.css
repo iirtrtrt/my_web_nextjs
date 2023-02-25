@@ -41,7 +41,7 @@ body {
   animation-fill-mode: forwards;
   stroke-width: 12;
   position: absolute;
-  top: 20%;
+  top: 22%;
   left: 12%;
   cursor: pointer;
   width: 32%;
@@ -56,7 +56,7 @@ body {
 }
 
 #hello:hover {
-  top: 18%;
+  top: 20%;
   left: 10%;
   width: 36%;
   height: 36%;
@@ -75,4 +75,33 @@ body {
   top: 31%;
   right: 9%;
   width: 14%;
+}
+
+.instruction {
+  position: absolute;
+  transform: translate(50%, 50%);
+  top: 28%;
+  right: 39%;
+  background-color: rgb(229 229 229);
+  /* transition: all 0.1s ease-in-out; */
+  padding: 20px;
+  border-radius: 20px;
+}
+
+p {
+  margin: 0;
+}
+
+.p-align-right {
+  text-align: right;
+}
+
+.ester-egg {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  /* top: 56%; */
+  left: 50%;
+  width: 40%;
+  transition: all 4s ease-in-out;
+  cursor: pointer;
 }
