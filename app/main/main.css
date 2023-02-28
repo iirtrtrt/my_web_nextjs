@@ -55,13 +55,6 @@ body {
   }
 }
 
-#hello:hover {
-  top: 20%;
-  left: 10%;
-  width: 36%;
-  height: 36%;
-}
-
 .scroll-down-btn {
   position: absolute;
   top: 32%;
@@ -71,10 +64,19 @@ body {
   width: 12%;
 }
 
-.scroll-down-btn:hover {
-  top: 31%;
-  right: 9%;
-  width: 14%;
+@media only screen and (min-width: 1024px) {
+  .scroll-down-btn:hover {
+    top: 31%;
+    right: 9%;
+    width: 14%;
+  }
+
+  #hello:hover {
+    top: 20%;
+    left: 10%;
+    width: 36%;
+    height: 36%;
+  }
 }
 
 .instruction {
@@ -83,9 +85,9 @@ body {
   top: 28%;
   right: 39%;
   background-color: rgb(229 229 229);
-  /* transition: all 0.1s ease-in-out; */
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 16px;
+  font-size: 1vw;
 }
 
 p {
@@ -99,9 +101,38 @@ p {
 .ester-egg {
   position: absolute;
   transform: translate(-50%, -50%);
-  /* top: 56%; */
   left: 50%;
   width: 40%;
   transition: all 4s ease-in-out;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .hide-mobile {
+    display: none !important;
+  }
+
+  #hello {
+    transform: translate(-50%, 0);
+    top: 16%;
+    left: 50%;
+    width: 88%;
+  }
+
+  .scroll-down-btn {
+    transform: translate(-50%, 0);
+    top: 52%;
+    left: 50%;
+    width: 32%;
+    height: 16%;
+  }
+
+  .ester-egg {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    width: 92%;
+    transition: all 4s ease-in-out;
+    cursor: pointer;
+  }
 }

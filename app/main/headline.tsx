@@ -32,7 +32,9 @@ export default function Headline({ bannerBottomRef }: any) {
   };
 
   const scrollDown = () => {
-    bannerBottomRef.current.scrollIntoView({ behavior: "smooth" });
+    bannerBottomRef.current.scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
   useEffect(() => {
@@ -54,12 +56,12 @@ export default function Headline({ bannerBottomRef }: any) {
   };
 
   const hideEsterEgg = () => {
-    setTopPersent("150%");
+    setTopPersent("-50%");
     setTimeout(() => setEsterEgg(0), 3000);
   };
 
   return (
-    <div>
+    <div className="min-w-[1000px]">
       <div
         onClick={() => {
           changeSvg();
@@ -76,7 +78,7 @@ export default function Headline({ bannerBottomRef }: any) {
         onClick={() => scrollDown()}
         className="scroll-down-btn"
       />
-      <div className="instruction">
+      <div className="instruction hide-mobile">
         <p>&#8656; click and change the language</p>
         <p>&#8656; click many times and see the ester egg</p>
         <p className="p-align-right">click to scroll down &#8658;</p>
