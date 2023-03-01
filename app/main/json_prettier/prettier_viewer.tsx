@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function PrettierViewer({ data }: any) {
   const jsonString = JSON.stringify(data, null, 2);
-  return <pre className={``}>{jsonString}</pre>;
+  return (
+    <div>
+      <pre className="">{jsonString}</pre>
+    </div>
+  );
 }

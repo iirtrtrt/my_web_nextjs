@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { AdvancedBannerTop } from "./advanced_banner";
-import BannerBottom from "./banner_bottom";
+import LayerBottom from "./layer_bottom";
 import "./main.css";
 
 export default function Main() {
@@ -13,7 +13,7 @@ export default function Main() {
     <main>
       <ParallaxProvider>
         <AdvancedBannerTop bannerBottomRef={bannerBottomRef} />
-        <BannerBottom bannerBottomRef={bannerBottomRef} />
+        <LayerBottom bannerBottomRef={bannerBottomRef} />
       </ParallaxProvider>
     </main>
   );

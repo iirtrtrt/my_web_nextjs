@@ -31,12 +31,12 @@ export default function JsonPritter() {
   };
 
   return (
-    <div className="">
+    <div className="w-full px-4">
       <div className="flex flex-col my-4">
         <textarea
           onChange={(e) => handleInputChange(e)}
           name="inputJson"
-          className="p-4 text-lg rounded-md my-2 bg-gray-200"
+          className="p-4 text-lg rounded-md bg-gray-200 my-2 h-[420px] lg:h-[300px]"
         />
       </div>
       <div className="flex items-center justify-between gap-2">
@@ -47,23 +47,29 @@ export default function JsonPritter() {
         >
           {validText}
         </p>
-        <button
-          disabled={isDisabled}
-          className="text-sm bg-teal-600 text-white py-2 px-6 rounded-xl disabled:opacity-25"
-          onClick={() => setViewer(eViewer.TreeViewer)}
-        >
-          {eViewer[0]}
-        </button>
-        <button
-          disabled={isDisabled}
-          className="text-sm bg-teal-600 text-white py-2 px-6 rounded-xl disabled:opacity-25"
-          onClick={() => setViewer(eViewer.PrettierViewer)}
-        >
-          {eViewer[1]}
-        </button>
+        <div className="">
+          <button
+            disabled={isDisabled}
+            className="text-sm bg-teal-600 text-white py-2 px-6 rounded-xl disabled:opacity-25"
+            onClick={() => setViewer(eViewer["TreeViewer"])}
+          >
+            {eViewer[0]}
+          </button>
+          <button
+            disabled={isDisabled}
+            className="text-sm bg-teal-600 text-white py-2 px-6 rounded-xl disabled:opacity-25"
+            onClick={() => setViewer(eViewer["PrettierViewer"])}
+          >
+            {eViewer[1]}
+          </button>
+        </div>
       </div>
-      {viewer == eViewer.TreeViewer && <TreeViewer data={json} />}
-      {viewer == eViewer.PrettierViewer && <PrettierViewer data={json} />}
+      <div className="flex flex-col my-4">
+        <div className="p-4 text-lg rounded-md bg-stone-700 my-2 min-h-[420px] lg:min-h-[300px] overflow-auto whitespace-nowrap">
+          {viewer == eViewer.TreeViewer && <TreeViewer data={json} />}
+          {viewer == eViewer.PrettierViewer && <PrettierViewer data={json} />}
+        </div>
+      </div>
     </div>
   );
 }

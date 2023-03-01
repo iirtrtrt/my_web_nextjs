@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function AboutMe() {
   return (
-    <div>about_me</div>
+    <div className='text-sky-300'>about_me</div>
   )
 }

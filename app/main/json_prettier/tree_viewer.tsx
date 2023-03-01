@@ -12,7 +12,10 @@ export default function TreeNode({ data, ml = false }: any) {
     if (typeof child === "object" && child !== null) {
       return <TreeNode key={index} data={child} ml={true} />;
     }
-
+    console.log(typeof child);
+    if (typeof child === "string") {
+      return '"' + String(child) + '"';
+    }
     return child !== null ? String(child) : "null";
   };
 
@@ -22,13 +25,13 @@ export default function TreeNode({ data, ml = false }: any) {
     return (
       <>
         <div className="" onClick={handleClick}>
-          {isExpanded ? "[-]" : "[+]"} Object "{keyLength}"
+          {isExpanded ? "[-]" : "[+]"} Object {"[" + keyLength + "]"}
         </div>
         {isExpanded && (
           <ul className="">
             {keys.map((key, index) => (
               <li key={index} className="">
-                {keys[index]}: {renderObjectChild(data[key], index)}
+                "{keys[index]}": {renderObjectChild(data[key], index)}
               </li>
             ))}
           </ul>
@@ -41,7 +44,7 @@ export default function TreeNode({ data, ml = false }: any) {
     return (
       <>
         <div className="" onClick={handleClick}>
-          {isExpanded ? "[-]" : "[+]"} Array "{data.length}"
+          {isExpanded ? "[-]" : "[+]"} Array {"[" + data.length + "]"}
         </div>
         {isExpanded && (
           <ul className="">
