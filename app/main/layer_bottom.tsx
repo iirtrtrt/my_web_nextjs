@@ -19,40 +19,42 @@ export default function LayerBottom({ bannerBottomRef }: any) {
       <div className="min-h-screen py-16 lg:py-24 w-full lg:mx-80">
         <div className="grid grid-cols-4 gap-4 text-sky-300 mb-4">
           <button
-            className={`text-md lg:text-2xl font-medium p-4 ${
-              subject == eSubject["About Me"] ? "text-sky-600" : ""
+            className={`text-md lg:text-2xl font-medium lg:font-normal p-4 ${
+              subject == eSubject["About Me"] && "text-sky-600"
             }`}
             onClick={() => setSubject(eSubject["About Me"])}
           >
             {eSubject[0]}
           </button>
           <button
-            className={`text-md lg:text-2xl font-medium p-4 ${
-              subject == eSubject["JSON Prettier"] ? "text-sky-600" : ""
+            className={`text-md lg:text-2xl font-medium lg:font-normal p-4 ${
+              subject == eSubject["JSON Prettier"] && "text-sky-600"
             }`}
             onClick={() => setSubject(eSubject["JSON Prettier"])}
           >
             {eSubject[1]}
           </button>
           <button
-            className={`text-md lg:text-2xl font-medium p-4 ${
-              subject == eSubject["Photo Editor"] ? "text-sky-600" : ""
+            className={`text-md lg:text-2xl font-medium lg:font-normal p-4 ${
+              subject == eSubject["Photo Editor"] && "text-sky-600"
             }`}
             onClick={() => setSubject(eSubject["Photo Editor"])}
           >
             {eSubject[2]}
           </button>
           <button
-            className={`text-md lg:text-2xl font-medium p-4 ${
-              subject == eSubject["Mini Game"] ? "text-sky-600" : ""
+            className={`text-md lg:text-2xl font-medium lg:font-normal p-4 ${
+              subject == eSubject["Mini Game"] && "text-sky-600"
             }`}
             onClick={() => setSubject(eSubject["Mini Game"])}
           >
             {eSubject[3]}
           </button>
         </div>
-        {subject == 0 && <AboutMe />}
-        {subject == 1 && <JsonPritter />}
+        <div className="w-full px-4">
+          {subject == 0 && <AboutMe />}
+          {subject == 1 && <JsonPritter />}
+        </div>
       </div>
     </div>
   );

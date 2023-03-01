@@ -1,0 +1,15 @@
+.end-cursor:after {
+  content: "|";
+  color: white;
+  animation: blink 1.2s step-start infinite;
+}
+
+.end-cursor.blinking:after {
+  animation: blink 1.5s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

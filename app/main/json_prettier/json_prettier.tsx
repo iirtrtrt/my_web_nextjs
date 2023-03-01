@@ -1,3 +1,4 @@
+import { Bentham } from "@next/font/google";
 import React, { useState } from "react";
 import PrettierViewer from "./prettier_viewer";
 import TreeViewer from "./tree_viewer";
@@ -31,7 +32,7 @@ export default function JsonPritter() {
   };
 
   return (
-    <div className="w-full px-4">
+    <>
       <div className="flex flex-col my-4">
         <textarea
           onChange={(e) => handleInputChange(e)}
@@ -50,14 +51,18 @@ export default function JsonPritter() {
         <div className="">
           <button
             disabled={isDisabled}
-            className="text-sm bg-teal-600 text-white py-2 px-6 rounded-xl disabled:opacity-25 mr-4"
+            className={`text-sm text-white py-2 px-6 rounded-xl disabled:opacity-25 mr-4 ${
+              viewer == eViewer["TreeViewer"] ? "bg-sky-900" : "bg-sky-600"
+            }`}
             onClick={() => setViewer(eViewer["TreeViewer"])}
           >
             {eViewer[0]}
           </button>
           <button
             disabled={isDisabled}
-            className="text-sm bg-teal-600 text-white py-2 px-6 rounded-xl disabled:opacity-25"
+            className={`text-sm text-white py-2 px-6 rounded-xl disabled:opacity-25 ${
+              viewer == eViewer["PrettierViewer"] ? "bg-sky-900" : "bg-sky-600"
+            }`}
             onClick={() => setViewer(eViewer["PrettierViewer"])}
           >
             {eViewer[1]}
@@ -70,6 +75,6 @@ export default function JsonPritter() {
           {viewer == eViewer.PrettierViewer && <PrettierViewer data={json} />}
         </div>
       </div>
-    </div>
+    </>
   );
 }
