@@ -70,7 +70,7 @@ export default function JsonPritter() {
         </div>
       </div>
       <div className="flex flex-col my-4">
-        <div className="p-4 text-lg rounded-md bg-stone-700 my-2 min-h-[420px] lg:min-h-[300px] overflow-auto whitespace-nowrap">
+        <div className="p-4 text-lg rounded-md bg-stone-800 my-2 min-h-[420px] lg:min-h-[300px] overflow-auto whitespace-nowrap">
           {viewer == eViewer.TreeViewer && <TreeViewer data={json} />}
           {viewer == eViewer.PrettierViewer && <PrettierViewer data={json} />}
         </div>

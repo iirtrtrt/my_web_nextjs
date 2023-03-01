@@ -14,11 +14,13 @@ enum eSubject {
 export default function LayerBottom({ bannerBottomRef }: any) {
   const [subject, setSubject] = useState(0);
   const [isGenerated, setIsGenerated] = useState(false);
-  const [textGenerator, setTextGenerator] = useState("");
+  const [isQueGenerated, setIsQueGenerated] = useState(false);
+  const [ansGenerator, setAnsGenerator] = useState("");
+  const [queGenerator, setQueGenerator] = useState("");
 
   return (
     <div className={`flex items-center justify-center`} ref={bannerBottomRef}>
-      <div className="min-h-screen py-16 lg:py-24 w-full lg:mx-80">
+      <div className="min-h-screen py-16 lg:py-24 w-full lg:mx-80 flex flex-col">
         <div className="grid grid-cols-4 gap-4 text-sky-300 mb-4">
           <button
             className={`text-md lg:text-2xl font-medium lg:font-normal p-4 ${
@@ -53,13 +55,17 @@ export default function LayerBottom({ bannerBottomRef }: any) {
             {eSubject[3]}
           </button>
         </div>
-        <div className="w-full px-4">
+        <div className="w-full px-4 flex flex-1 flex-col">
           {subject == 0 && (
             <AboutMe
               isGenerated={isGenerated}
               setIsGenerated={setIsGenerated}
-              textGenerator={textGenerator}
-              setTextGenerator={setTextGenerator}
+              ansGenerator={ansGenerator}
+              setAnsGenerator={setAnsGenerator}
+              isQueGenerated={isQueGenerated}
+              setIsQueGenerated={setIsQueGenerated}
+              queGenerator={queGenerator}
+              setQueGenerator={setQueGenerator}
             />
           )}
           {subject == 1 && <JsonPritter />}
