@@ -11,7 +11,6 @@ const nextConfig = {
 
     return config;
   },
-  basePath: "/my_web_nextjs",
 };
 
 module.exports = nextConfig;
