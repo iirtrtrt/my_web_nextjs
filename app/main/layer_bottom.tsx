@@ -13,6 +13,8 @@ enum eSubject {
 
 export default function LayerBottom({ bannerBottomRef }: any) {
   const [subject, setSubject] = useState(0);
+  const [isGenerated, setIsGenerated] = useState(false);
+  const [textGenerator, setTextGenerator] = useState("");
 
   return (
     <div className={`flex items-center justify-center`} ref={bannerBottomRef}>
@@ -52,7 +54,14 @@ export default function LayerBottom({ bannerBottomRef }: any) {
           </button>
         </div>
         <div className="w-full px-4">
-          {subject == 0 && <AboutMe />}
+          {subject == 0 && (
+            <AboutMe
+              isGenerated={isGenerated}
+              setIsGenerated={setIsGenerated}
+              textGenerator={textGenerator}
+              setTextGenerator={setTextGenerator}
+            />
+          )}
           {subject == 1 && <JsonPritter />}
         </div>
       </div>

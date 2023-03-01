@@ -1,29 +1,42 @@
 import { introduction } from "@/app/components";
 import { getRandomInt } from "@/functions/getRandomInt";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./about_me.css";
 
-export default function AboutMe() {
-  const [textGenerater, setTextGenerater] = useState("");
-  const [isDone, setIsDone] = useState(false);
-
+export default function AboutMe({
+  isGenerated,
+  setIsGenerated,
+  textGenerator,
+  setTextGenerator,
+}: {
+  isGenerated: boolean;
+  setIsGenerated: (gnd: boolean) => void;
+  textGenerator: string;
+  setTextGenerator: (val: string) => void;
+}) {
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (textGenerater.length >= introduction.length) {
-        setIsDone(true);
-        console.log(isDone);
-      }
+    if (isGenerated) {
+      return;
+    }
 
-      setTextGenerater(
-        introduction.slice(0, textGenerater.length + getRandomInt(7))
+    if (textGenerator.length >= introduction.length) {
+      setIsGenerated(true);
+    }
+
+    const timeout = setTimeout(() => {
+      setTextGenerator(
+        introduction.slice(0, textGenerator.length + getRandomInt(7))
       );
-    }, getRandomInt(500));
+    }, getRandomInt(300));
     return () => clearTimeout(timeout);
-  }, [textGenerater]);
+  }, [textGenerator, isGenerated]);
+
   return (
     <div className={`text-white`}>
-      <pre className={`end-cursor whitespace-pre-wrap break-normal`}>{textGenerater}</pre>
+      <pre className={`end-cursor whitespace-pre-wrap break-normal`}>
+        {textGenerator}
+      </pre>
       <Link href={`https://www.linkedin.com/in/taekyung-kim-5757a4208/`}>
         Linkedin
       </Link>
