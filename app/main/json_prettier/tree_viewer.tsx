@@ -14,7 +14,7 @@ export default function TreeNode({ data, ml = false }: any) {
     }
     console.log(typeof child);
     if (typeof child === "string") {
-      return '"' + String(child) + '"';
+      return `'"${String(child)}"`;
     }
     return child !== null ? String(child) : "null";
   };
@@ -25,7 +25,8 @@ export default function TreeNode({ data, ml = false }: any) {
     return (
       <>
         <div className="" onClick={handleClick}>
-          {isExpanded ? "[-]" : "[+]"} Object {"[" + keyLength + "]"}
+          {isExpanded ? "[-]" : "[+]"} Object{" "}
+          {!isExpanded && "[" + keyLength + "]"}
         </div>
         {isExpanded && (
           <ul className="">
@@ -44,7 +45,8 @@ export default function TreeNode({ data, ml = false }: any) {
     return (
       <>
         <div className="" onClick={handleClick}>
-          {isExpanded ? "[-]" : "[+]"} Array {"[" + data.length + "]"}
+          {isExpanded ? "[-]" : "[+]"} Array{" "}
+          {!isExpanded && "[" + data.length + "]"}
         </div>
         {isExpanded && (
           <ul className="">

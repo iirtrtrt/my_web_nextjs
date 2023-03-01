@@ -5,7 +5,7 @@ import AboutMe from "./about_me/about_me";
 import JsonPritter from "./json_prettier/json_prettier";
 
 enum eSubject {
-  "About me" = 0,
+  "About Me" = 0,
   "JSON Prettier" = 1,
   "Photo Editor" = 2,
   "Mini Game" = 3,
@@ -19,15 +19,15 @@ export default function LayerBottom({ bannerBottomRef }: any) {
       <div className="min-h-screen py-16 lg:py-24 w-full lg:mx-80">
         <div className="grid grid-cols-4 gap-4 text-sky-300 mb-4">
           <button
-            className={`text-md lg:text-2xl p-4 ${
-              subject == eSubject["About me"] ? "text-sky-600" : ""
+            className={`text-md lg:text-2xl font-medium p-4 ${
+              subject == eSubject["About Me"] ? "text-sky-600" : ""
             }`}
-            onClick={() => setSubject(eSubject["About me"])}
+            onClick={() => setSubject(eSubject["About Me"])}
           >
             {eSubject[0]}
           </button>
           <button
-            className={`text-md lg:text-2xl p-4 ${
+            className={`text-md lg:text-2xl font-medium p-4 ${
               subject == eSubject["JSON Prettier"] ? "text-sky-600" : ""
             }`}
             onClick={() => setSubject(eSubject["JSON Prettier"])}
@@ -35,7 +35,7 @@ export default function LayerBottom({ bannerBottomRef }: any) {
             {eSubject[1]}
           </button>
           <button
-            className={`text-md lg:text-2xl p-4 ${
+            className={`text-md lg:text-2xl font-medium p-4 ${
               subject == eSubject["Photo Editor"] ? "text-sky-600" : ""
             }`}
             onClick={() => setSubject(eSubject["Photo Editor"])}
@@ -43,7 +43,7 @@ export default function LayerBottom({ bannerBottomRef }: any) {
             {eSubject[2]}
           </button>
           <button
-            className={`text-md lg:text-2xl p-4 ${
+            className={`text-md lg:text-2xl font-medium p-4 ${
               subject == eSubject["Mini Game"] ? "text-sky-600" : ""
             }`}
             onClick={() => setSubject(eSubject["Mini Game"])}

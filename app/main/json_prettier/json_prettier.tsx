@@ -8,7 +8,7 @@ enum eViewer {
 }
 
 export default function JsonPritter() {
-  const [validText, setIValidText] = useState<string>();
+  const [validText, setIValidText] = useState("\u00A0");
   const [isDisabled, setisDisabled] = useState(true);
   const [json, setJson] = useState();
   const [viewer, setViewer] = useState<number>();
@@ -39,10 +39,10 @@ export default function JsonPritter() {
           className="p-4 text-lg rounded-md bg-gray-200 my-2 h-[420px] lg:h-[300px]"
         />
       </div>
-      <div className="flex items-center justify-between gap-2">
+      <div className="flex lg:items-center justify-between gap-2 lg:flex-row flex-col">
         <p
           className={`font-bold text-sm ${
-            isDisabled ? "text-red-700" : "text-gray-700"
+            isDisabled ? "text-red-600" : "text-sky-300"
           } `}
         >
           {validText}
@@ -50,7 +50,7 @@ export default function JsonPritter() {
         <div className="">
           <button
             disabled={isDisabled}
-            className="text-sm bg-teal-600 text-white py-2 px-6 rounded-xl disabled:opacity-25"
+            className="text-sm bg-teal-600 text-white py-2 px-6 rounded-xl disabled:opacity-25 mr-4"
             onClick={() => setViewer(eViewer["TreeViewer"])}
           >
             {eViewer[0]}
