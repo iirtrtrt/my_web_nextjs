@@ -15,11 +15,11 @@ export default function AboutMe({
   setQueGenerator,
 }: {
   isGenerated: boolean;
-  setIsGenerated: (gnd: boolean) => void;
+  setIsGenerated: (val: boolean) => void;
   ansGenerator: string;
   setAnsGenerator: (val: string) => void;
   isQueGenerated: boolean;
-  setIsQueGenerated: (gnd: boolean) => void;
+  setIsQueGenerated: (val: boolean) => void;
   queGenerator: string;
   setQueGenerator: (val: string) => void;
 }) {
