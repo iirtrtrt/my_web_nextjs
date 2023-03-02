@@ -10,9 +10,9 @@ enum eSubject {
 }
 
 export default function LayerBottom({
-  bannerBottomRef,
+  layerBottomRef,
 }: {
-  bannerBottomRef: RefObject<HTMLDivElement>;
+  layerBottomRef: RefObject<HTMLDivElement>;
 }) {
   const [subject, setSubject] = useState(0);
   const [isGenerated, setIsGenerated] = useState(false);
@@ -21,7 +21,7 @@ export default function LayerBottom({
   const [queGenerator, setQueGenerator] = useState("");
 
   return (
-    <div className={`flex items-center justify-center`} ref={bannerBottomRef}>
+    <div className={`flex items-center justify-center`} ref={layerBottomRef}>
       <div className="min-h-screen py-16 lg:py-24 w-full lg:mx-80 flex flex-col">
         <div className="grid grid-cols-4 gap-4 text-sky-300 mb-4">
           <button

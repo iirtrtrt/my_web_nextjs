@@ -4,9 +4,9 @@ import { BannerLayer } from "react-scroll-parallax/dist/components/ParallaxBanne
 import LayerTop from "./layer_top";
 
 export const AdvancedBannerTop = ({
-  bannerBottomRef,
+  layerBottomRef,
 }: {
-  bannerBottomRef: RefObject<HTMLDivElement>;
+  layerBottomRef: RefObject<HTMLDivElement>;
 }) => {
   const background: BannerLayer = {
     image: "assets/background_galaxy.png",
@@ -21,7 +21,7 @@ export const AdvancedBannerTop = ({
     translateY: [0, 15],
     scale: [1, 1.1, "easeOutCubic"],
     shouldAlwaysCompleteAnimation: true,
-    children: <LayerTop bannerBottomRef={bannerBottomRef} />,
+    children: <LayerTop layerBottomRef={layerBottomRef} />,
   };
 
   const gradientOverlay: BannerLayer = {

@@ -8,9 +8,9 @@ import scrollDownBtn from "../../public/assets/scroll-down-arrow.json";
 import esterEggAnimation from "../../public/assets/ester_egg.json";
 
 export default function LayerTop({
-  bannerBottomRef,
+  layerBottomRef,
 }: {
-  bannerBottomRef: RefObject<HTMLDivElement>;
+  layerBottomRef: RefObject<HTMLDivElement>;
 }) {
   const [helloSvg, setHelloSvg] = useState(0);
   const [esterEgg, setEsterEgg] = useState(0);
@@ -34,7 +34,7 @@ export default function LayerTop({
   };
 
   const scrollDown = () => {
-    bannerBottomRef.current?.scrollIntoView({
+    layerBottomRef.current?.scrollIntoView({
       behavior: "smooth",
     });
   };
