@@ -1,8 +1,13 @@
+import { RefObject } from "react";
 import { ParallaxBanner } from "react-scroll-parallax";
 import { BannerLayer } from "react-scroll-parallax/dist/components/ParallaxBanner/types";
 import LayerTop from "./layer_top";
 
-export const AdvancedBannerTop = ({ bannerBottomRef }: any) => {
+export const AdvancedBannerTop = ({
+  bannerBottomRef,
+}: {
+  bannerBottomRef: RefObject<HTMLDivElement>;
+}) => {
   const background: BannerLayer = {
     image: "assets/background_galaxy.png",
     translateY: [0, 50],

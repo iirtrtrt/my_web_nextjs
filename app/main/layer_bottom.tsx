@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { RefObject, useState } from "react";
 import AboutMe from "./about_me/about_me";
 import JsonPritter from "./json_prettier/json_prettier";
 
@@ -11,7 +11,11 @@ enum eSubject {
   "Mini Game" = 3,
 }
 
-export default function LayerBottom({ bannerBottomRef }: any) {
+export default function LayerBottom({
+  bannerBottomRef,
+}: {
+  bannerBottomRef: RefObject<HTMLDivElement>;
+}) {
   const [subject, setSubject] = useState(0);
   const [isGenerated, setIsGenerated] = useState(false);
   const [isQueGenerated, setIsQueGenerated] = useState(false);
