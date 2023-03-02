@@ -20,7 +20,6 @@
     "@types/react-dom": "18.0.11",
     "lottie-react": "^2.4.0",
     "next": "13.1.6",
-    "nextjs-google-analytics": "^2.3.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-parallax-mouse": "^2.0.1",

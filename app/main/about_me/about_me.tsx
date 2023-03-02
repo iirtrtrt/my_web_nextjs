@@ -45,7 +45,7 @@ export default function AboutMe({
         const timeout = setTimeout(() => {
           setQueGenerator(quesetion.slice(0, queGenerator.length + 1));
         }, getRandomInt(192));
-        
+
         return () => clearTimeout(timeout);
       } else {
         const timeout = setTimeout(
@@ -72,22 +72,24 @@ export default function AboutMe({
 
   return (
     <div className={`text-white flex flex-1 flex-col`}>
-      <pre
-        className={`whitespace-pre-wrap break-normal bg-stone-700 px-[12px] rounded-md gpt-shadow ${
-          isQueGenerated && "end-cursor py-[12px]"
-        }`}
-      >
-        {ansGenerator}
-      </pre>
-      {isGenerated && (
-        <>
-          <Link href={`https://www.linkedin.com/in/taekyung-kim-5757a4208/`}>
-            Linkedin
-          </Link>
-          <Link href={`https://github.com/iirtrtrt`}>GitHub</Link>
-        </>
-      )}
-
+      <div className={`bg-stone-700 px-[12px] gpt-shadow rounded-md`}>
+        <pre
+          className={`whitespace-pre-wrap break-normal ${
+            isQueGenerated && "end-cursor py-[12px]"
+          }`}
+        >
+          {ansGenerator}
+        </pre>
+        {isGenerated && (
+          <>
+            <Link href={`https://www.linkedin.com/in/taekyung-kim-5757a4208/`}>
+              Linkedin
+            </Link>
+            <br />
+            <Link href={`https://github.com/iirtrtrt`}>GitHub</Link>
+          </>
+        )}
+      </div>
       <div
         className={`w-full h-[48px] bg-stone-800 rounded-md gpt-shadow mt-auto px-[12px] flex items-center ${
           !isQueGenerated && "end-cursor"
