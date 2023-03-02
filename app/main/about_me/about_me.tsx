@@ -13,6 +13,7 @@ export default function AboutMe({
   setIsQueGenerated,
   queGenerator,
   setQueGenerator,
+  isOnAboutMe,
 }: {
   isGenerated: boolean;
   setIsGenerated: (val: boolean) => void;
@@ -22,40 +23,50 @@ export default function AboutMe({
   setIsQueGenerated: (val: boolean) => void;
   queGenerator: string;
   setQueGenerator: (val: string) => void;
+  isOnAboutMe: boolean;
 }) {
   const [delay, setDelay] = useState(true);
 
   useEffect(() => {
-    if (isGenerated) {
-      return;
-    }
+    if (isOnAboutMe) {
+      if (isGenerated) {
+        return;
+      }
 
-    if (queGenerator.length >= quesetion.length) {
-      setIsQueGenerated(true);
-    }
+      if (queGenerator.length >= quesetion.length && !isQueGenerated) {
+        setIsQueGenerated(true);
+      }
 
-    if (ansGenerator.length >= introduction.length) {
-      setIsGenerated(true);
-    }
+      if (ansGenerator.length >= introduction.length && !isGenerated) {
+        setIsGenerated(true);
+      }
 
-    if (!isQueGenerated) {
-      const timeout = setTimeout(() => {
-        setQueGenerator(quesetion.slice(0, queGenerator.length + 1));
-      }, getRandomInt(240));
-      return () => clearTimeout(timeout);
-    } else {
-      const timeout = setTimeout(
-        () => {
-          setAnsGenerator(
-            introduction.slice(0, ansGenerator.length + getRandomInt(10))
-          );
-          setDelay(false);
-        },
-        delay ? 2048 : getRandomInt(240)
-      );
-      return () => clearTimeout(timeout);
+      if (!isQueGenerated) {
+        const timeout = setTimeout(() => {
+          setQueGenerator(quesetion.slice(0, queGenerator.length + 1));
+        }, getRandomInt(240));
+        return () => clearTimeout(timeout);
+      } else {
+        const timeout = setTimeout(
+          () => {
+            setAnsGenerator(
+              introduction.slice(0, ansGenerator.length + getRandomInt(10))
+            );
+            setDelay(false);
+          },
+          delay ? 2048 : getRandomInt(240)
+        );
+        return () => clearTimeout(timeout);
+      }
     }
-  }, [ansGenerator, isGenerated, queGenerator, isQueGenerated, delay]);
+  }, [
+    ansGenerator,
+    isGenerated,
+    queGenerator,
+    isQueGenerated,
+    delay,
+    isOnAboutMe,
+  ]);
 
   return (
     <div className={`text-white flex flex-1 flex-col`}>

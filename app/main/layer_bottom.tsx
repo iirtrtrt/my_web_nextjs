@@ -1,4 +1,4 @@
-import React, { RefObject, useState } from "react";
+import React, { RefObject, useEffect, useState } from "react";
 import AboutMe from "./about_me/about_me";
 import JsonPritter from "./json_prettier/json_prettier";
 
@@ -19,6 +19,37 @@ export default function LayerBottom({
   const [isQueGenerated, setIsQueGenerated] = useState(false);
   const [ansGenerator, setAnsGenerator] = useState("");
   const [queGenerator, setQueGenerator] = useState("");
+  const [isOnAboutMe, setIsOnAboutMe] = useState(false);
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.88,
+    };
+
+    const callback = (
+      entries: IntersectionObserverEntry[],
+      observer: IntersectionObserver
+    ) => {
+      entries.forEach((entry) => {
+        if (entry.intersectionRatio >= 0.88 && !isOnAboutMe) {
+          setIsOnAboutMe(true);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+    if (layerBottomRef.current) {
+      observer.observe(layerBottomRef.current);
+    }
+
+    return () => {
+      if (layerBottomRef.current) {
+        observer.unobserve(layerBottomRef.current);
+      }
+    };
+  }, [isOnAboutMe]);
 
   return (
     <div className={`flex items-center justify-center`} ref={layerBottomRef}>
@@ -68,6 +99,7 @@ export default function LayerBottom({
               setIsQueGenerated={setIsQueGenerated}
               queGenerator={queGenerator}
               setQueGenerator={setQueGenerator}
+              isOnAboutMe={isOnAboutMe}
             />
           )}
           {subject == 1 && <JsonPritter />}
