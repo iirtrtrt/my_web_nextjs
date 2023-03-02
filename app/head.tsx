@@ -5,16 +5,6 @@ export default function Head() {
       <meta content="width=device-width, initial-scale=1" name="viewport" />
       <meta name="description" content="This is a Taekyung Kim's web" />
       <link rel="icon" href="/favicon.ico" />
-      <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-WRRVC7NXPP"
-      ></script>
-      <script>
-        {` window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WRRVC7NXPP');`}
-      </script>
     </>
   );
 }

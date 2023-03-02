@@ -45,6 +45,7 @@ export default function AboutMe({
         const timeout = setTimeout(() => {
           setQueGenerator(quesetion.slice(0, queGenerator.length + 1));
         }, getRandomInt(192));
+        
         return () => clearTimeout(timeout);
       } else {
         const timeout = setTimeout(
@@ -56,6 +57,7 @@ export default function AboutMe({
           },
           delay ? 1536 : getRandomInt(192)
         );
+
         return () => clearTimeout(timeout);
       }
     }
