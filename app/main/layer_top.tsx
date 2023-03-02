@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect, RefObject } from "react";
 import HelloEn from "../../public/assets/hello_en.svg";
 import HelloEs from "../../public/assets/hello_es.svg";

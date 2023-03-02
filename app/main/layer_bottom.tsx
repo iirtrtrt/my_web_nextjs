@@ -1,5 +1,3 @@
-"use client";
-
 import React, { RefObject, useState } from "react";
 import AboutMe from "./about_me/about_me";
 import JsonPritter from "./json_prettier/json_prettier";

@@ -1,4 +1,3 @@
-import { Bentham } from "@next/font/google";
 import React, { useState } from "react";
 import PrettierViewer from "./prettier_viewer";
 import TreeViewer from "./tree_viewer";
