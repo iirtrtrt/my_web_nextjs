@@ -14,7 +14,7 @@ export default function TreeNode({ data, ml = false }: any) {
     }
     console.log(typeof child);
     if (typeof child === "string") {
-      return `'"${String(child)}"`;
+      return `"${String(child)}"`;
     }
     return child !== null ? String(child) : "null";
   };

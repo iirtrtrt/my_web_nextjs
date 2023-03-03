@@ -32,14 +32,38 @@ export default function JsonPritter() {
 
   return (
     <>
-      <div className="flex flex-col my-4">
+      <div className={`flex flex-col`}>
         <textarea
           onChange={(e) => handleInputChange(e)}
           name="inputJson"
-          className="p-4 text-lg rounded-md bg-gray-200 my-2 h-[420px] lg:h-[300px]"
+          placeholder={`{
+            "glossary": {
+                "title": "example glossary",
+            "GlossDiv": {
+                    "title": "S",
+              "GlossList": {
+                        "GlossEntry": {
+                            "ID": "SGML",
+                  "SortAs": "SGML",
+                  "GlossTerm": "Standard Generalized Markup Language",
+                  "Acronym": "SGML",
+                  "Abbrev": "ISO 8879:1986",
+                  "GlossDef": {
+                                "para": "A meta-markup language, used to create markup languages such as DocBook.",
+                    "GlossSeeAlso": ["GML", "XML"]
+                            },
+                  "GlossSee": "markup"
+                        }
+                    }
+                }
+            }
+        }`}
+          className={`p-4 text-lg rounded-md bg-gray-200 h-[420px] lg:h-[300px]`}
         />
       </div>
-      <div className="flex lg:items-center justify-between gap-2 lg:flex-row flex-col">
+      <div
+        className={`flex lg:items-center justify-between gap-2 lg:flex-row flex-col`}
+      >
         <p
           className={`font-bold text-sm ${
             isDisabled ? "text-red-600" : "text-sky-300"
@@ -47,7 +71,7 @@ export default function JsonPritter() {
         >
           {validText}
         </p>
-        <div className="">
+        <div className={`my-4`}>
           <button
             disabled={isDisabled}
             className={`text-sm text-white py-2 px-6 rounded-xl disabled:opacity-25 mr-4 ${
@@ -68,10 +92,14 @@ export default function JsonPritter() {
           </button>
         </div>
       </div>
-      <div className="flex flex-col my-4">
-        <div className="p-4 text-lg rounded-md bg-stone-800 my-2 min-h-[420px] lg:min-h-[300px] overflow-auto whitespace-nowrap">
-          {viewer == eViewer.TreeViewer && <TreeViewer data={json} />}
-          {viewer == eViewer.PrettierViewer && <PrettierViewer data={json} />}
+      <div className={`flex flex-col`}>
+        <div
+          className={`p-4 text-lg rounded-md bg-stone-800 min-h-[420px] lg:min-h-[300px] overflow-auto whitespace-nowrap text-white`}
+        >
+          {viewer == eViewer["TreeViewer"] && <TreeViewer data={json} />}
+          {viewer == eViewer["PrettierViewer"] && (
+            <PrettierViewer data={json} />
+          )}
         </div>
       </div>
     </>

@@ -4,7 +4,7 @@ export default function PrettierViewer({ data }: any) {
   const jsonString = JSON.stringify(data, null, 2);
   return (
     <div>
-      <pre className="">{jsonString}</pre>
+      <pre className={`whitespace-pre-wrap break-normal`}>{jsonString}</pre>
     </div>
   );
 }

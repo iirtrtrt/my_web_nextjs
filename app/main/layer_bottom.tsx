@@ -1,5 +1,6 @@
 import React, { RefObject, useEffect, useState } from "react";
 import AboutMe from "./about_me/about_me";
+import CommingSoon from "./coming_soon/coming_soon";
 import JsonPritter from "./json_prettier/json_prettier";
 
 enum eSubject {
@@ -53,7 +54,7 @@ export default function LayerBottom({
 
   return (
     <div className={`flex items-center justify-center`} ref={layerBottomRef}>
-      <div className="min-h-screen py-16 lg:py-24 w-full lg:mx-80 flex flex-col">
+      <div className="min-h-screen py-16 lg:py-24 w-full xl:mx-80 lg:mx-60 md:mx-40 flex flex-col">
         <div className="grid grid-cols-4 gap-4 text-sky-300 mb-4">
           <button
             className={`text-md lg:text-2xl font-medium lg:font-normal p-4 ${
@@ -89,7 +90,7 @@ export default function LayerBottom({
           </button>
         </div>
         <div className="w-full px-4 flex flex-1 flex-col">
-          {subject == 0 && (
+          {subject == eSubject["About Me"] && (
             <AboutMe
               isGenerated={isGenerated}
               setIsGenerated={setIsGenerated}
@@ -102,7 +103,13 @@ export default function LayerBottom({
               isOnAboutMe={isOnAboutMe}
             />
           )}
-          {subject == 1 && <JsonPritter />}
+          {subject == eSubject["JSON Prettier"] && <JsonPritter />}
+          {subject == eSubject["Photo Editor"] && (
+            <CommingSoon subject={eSubject[2]} />
+          )}
+          {subject == eSubject["Mini Game"] && (
+            <CommingSoon subject={eSubject[3]} />
+          )}
         </div>
       </div>
     </div>
