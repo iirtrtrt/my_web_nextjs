@@ -1,15 +1,17 @@
+import { sampleJson } from "@/app/components";
 import React, { useState } from "react";
 import PrettierViewer from "./prettier_viewer";
 import TreeViewer from "./tree_viewer";
 
 enum eViewer {
-  TreeViewer = 0,
-  PrettierViewer = 1,
+  "Tree Viewer" = 0,
+  "Prettier Viewer" = 1,
 }
 
 export default function JsonPritter() {
-  const [validText, setIValidText] = useState("\u00A0");
+  const [notifyText, setNotifyText] = useState("\u00A0");
   const [isDisabled, setisDisabled] = useState(true);
+  const [inputJson, setInputJson] = useState("");
   const [json, setJson] = useState();
   const [viewer, setViewer] = useState<number>();
 
@@ -22,43 +24,48 @@ export default function JsonPritter() {
     }
   };
 
-  const handleInputChange = (event: { target: { value: string } }) => {
-    const value = event.target.value;
+  const onChangeJson = (value: string) => {
     const isValidJson = validateJson(value);
 
     setisDisabled(!isValidJson);
-    setIValidText(`Input value is ${isValidJson ? "valid" : "invalid"} JSON`);
+    setNotifyText(`Input value is ${isValidJson ? "valid" : "invalid"} JSON`);
+  };
+
+  const copyInputJson = () => {
+    navigator.clipboard.writeText(inputJson);
+
+    let previousText = notifyText;
+    setNotifyText("Copied");
+    setTimeout(() => {
+      setNotifyText(previousText);
+    }, 2000);
   };
 
   return (
-    <>
-      <div className={`flex flex-col`}>
+    <div className={`flex flex-1 flex-col`}>
+      <div className={`bg-gray-200 rounded-md`}>
+        <div className={`border-b-4 border-sky-900 font-semibold`}>
+          <button
+            className={`py-2 px-6`}
+            onClick={() => {
+              setInputJson(sampleJson);
+              onChangeJson(sampleJson);
+            }}
+          >
+            Sample
+          </button>
+          <button className={`py-2 px-6`} onClick={() => copyInputJson()}>
+            Copy
+          </button>
+        </div>
         <textarea
-          onChange={(e) => handleInputChange(e)}
-          name="inputJson"
-          placeholder={`{
-            "glossary": {
-                "title": "example glossary",
-            "GlossDiv": {
-                    "title": "S",
-              "GlossList": {
-                        "GlossEntry": {
-                            "ID": "SGML",
-                  "SortAs": "SGML",
-                  "GlossTerm": "Standard Generalized Markup Language",
-                  "Acronym": "SGML",
-                  "Abbrev": "ISO 8879:1986",
-                  "GlossDef": {
-                                "para": "A meta-markup language, used to create markup languages such as DocBook.",
-                    "GlossSeeAlso": ["GML", "XML"]
-                            },
-                  "GlossSee": "markup"
-                        }
-                    }
-                }
-            }
-        }`}
-          className={`p-4 text-lg rounded-md bg-gray-200 h-[420px] lg:h-[300px]`}
+          onChange={(e) => {
+            setInputJson(e.target.value);
+            onChangeJson(e.target.value);
+          }}
+          className={`p-4 text-lg bg-gray-200 h-[420px] lg:h-[300px] w-full`}
+          placeholder={sampleJson}
+          value={inputJson}
         />
       </div>
       <div
@@ -69,39 +76,35 @@ export default function JsonPritter() {
             isDisabled ? "text-red-600" : "text-sky-300"
           } `}
         >
-          {validText}
+          {notifyText}
         </p>
         <div className={`my-4`}>
           <button
             disabled={isDisabled}
             className={`text-sm text-white py-2 px-6 rounded-xl disabled:opacity-25 mr-4 ${
-              viewer == eViewer["TreeViewer"] ? "bg-sky-900" : "bg-sky-600"
+              viewer == eViewer["Tree Viewer"] ? "bg-sky-900" : "bg-sky-600"
             }`}
-            onClick={() => setViewer(eViewer["TreeViewer"])}
+            onClick={() => setViewer(eViewer["Tree Viewer"])}
           >
             {eViewer[0]}
           </button>
           <button
             disabled={isDisabled}
             className={`text-sm text-white py-2 px-6 rounded-xl disabled:opacity-25 ${
-              viewer == eViewer["PrettierViewer"] ? "bg-sky-900" : "bg-sky-600"
+              viewer == eViewer["Prettier Viewer"] ? "bg-sky-900" : "bg-sky-600"
             }`}
-            onClick={() => setViewer(eViewer["PrettierViewer"])}
+            onClick={() => setViewer(eViewer["Prettier Viewer"])}
           >
             {eViewer[1]}
           </button>
         </div>
       </div>
-      <div className={`flex flex-col`}>
-        <div
-          className={`p-4 text-lg rounded-md bg-stone-800 min-h-[420px] lg:min-h-[300px] overflow-auto whitespace-nowrap text-white`}
-        >
-          {viewer == eViewer["TreeViewer"] && <TreeViewer data={json} />}
-          {viewer == eViewer["PrettierViewer"] && (
-            <PrettierViewer data={json} />
-          )}
-        </div>
+      <div
+        className={`p-4 text-lg rounded-md bg-stone-800 min-h-[420px] lg:min-h-[300px] overflow-auto whitespace-nowrap text-white`}
+      >
+        {viewer == eViewer["Tree Viewer"] && <TreeViewer data={json} />}
+        {viewer == eViewer["Prettier Viewer"] && <PrettierViewer data={json} />}
       </div>
-    </>
+    </div>
   );
 }

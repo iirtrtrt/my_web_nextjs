@@ -52,7 +52,7 @@ export default function LayerTop({
 
   const showEsterEgg = () => {
     if (countdown <= 0) {
-      setCountdown(5);
+      setCountdown(3);
       setEsterEgg(0);
     }
   };
