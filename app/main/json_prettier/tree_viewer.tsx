@@ -24,10 +24,13 @@ export default function TreeNode({ data, ml = false }: any) {
     const keyLength = keys.length;
     return (
       <>
-        <div className="" onClick={handleClick}>
+        <span
+          className={`cursor-pointer hover:text-sky-800`}
+          onClick={handleClick}
+        >
           {isExpanded ? "[-]" : "[+]"} Object{" "}
           {!isExpanded && "[" + keyLength + "]"}
-        </div>
+        </span>
         {isExpanded && (
           <ul className="">
             {keys.map((key, index) => (
@@ -44,10 +47,13 @@ export default function TreeNode({ data, ml = false }: any) {
   const renderArray = () => {
     return (
       <>
-        <div className="" onClick={handleClick}>
+        <span
+          className={`cursor-pointer hover:text-sky-800`}
+          onClick={handleClick}
+        >
           {isExpanded ? "[-]" : "[+]"} Array{" "}
           {!isExpanded && "[" + data.length + "]"}
-        </div>
+        </span>
         {isExpanded && (
           <ul className="">
             {data.map((child: any, index: number) => (
@@ -64,7 +70,9 @@ export default function TreeNode({ data, ml = false }: any) {
   const type = Array.isArray(data) ? "array" : typeof data;
 
   return (
-    <div className={ml ? `ml-12` : `ml-0`}>
+    <div
+      className={`${ml ? `ml-12` : `ml-0`} whitespace-pre-wrap break-normal`}
+    >
       {type === "object" && renderObject()}
       {type === "array" && renderArray()}
     </div>

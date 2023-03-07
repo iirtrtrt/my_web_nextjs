@@ -44,7 +44,7 @@ export default function AboutMe({
       if (!isQueGenerated) {
         const timeout = setTimeout(() => {
           setQueGenerator(quesetion.slice(0, queGenerator.length + 1));
-        }, getRandomInt(192));
+        }, getRandomInt(160));
 
         return () => clearTimeout(timeout);
       } else {
@@ -55,7 +55,7 @@ export default function AboutMe({
             );
             setDelay(false);
           },
-          delay ? 1536 : getRandomInt(192)
+          delay ? 1280 : getRandomInt(160)
         );
 
         return () => clearTimeout(timeout);
@@ -72,26 +72,39 @@ export default function AboutMe({
 
   return (
     <div className={`text-white flex flex-1 flex-col`}>
-      <div className={`bg-stone-700 px-[12px] gpt-shadow rounded-md`}>
+      <div className={`bg-stone-700 px-4 gpt-shadow rounded-md mb-4`}>
         <pre
           className={`whitespace-pre-wrap break-normal ${
-            isQueGenerated && "end-cursor py-[12px]"
+            isQueGenerated && "end-cursor py-4"
           }`}
         >
           {ansGenerator}
         </pre>
         {isGenerated && (
-          <>
-            <Link href={`https://www.linkedin.com/in/taekyung-kim-5757a4208/`}>
+          <div className={`grid grid-cols-2 gap-2 h-300px mb-3 font-medium`}>
+            <Link
+              href={`https://www.linkedin.com/in/taekyung-kim-5757a4208/`}
+              className={`flex flex-col p-1 hover:p-0 ease-in-out duration-300`}
+            >
               Linkedin
+              <div
+                className={`bg-[url('/assets/about_me_linkedin.png')] rounded-md p-16 bg-cover blur-[1px] hover:blur-[0px]`}
+              ></div>
             </Link>
-            <br />
-            <Link href={`https://github.com/iirtrtrt`}>GitHub</Link>
-          </>
+            <Link
+              href={`https://github.com/iirtrtrt`}
+              className={`flex flex-col p-1 hover:p-0 ease-in-out duration-300`}
+            >
+              GitHub
+              <div
+                className={`bg-[url('/assets/about_me_github.png')] rounded-md p-16 bg-cover blur-[1px] hover:blur-[0px]`}
+              ></div>
+            </Link>
+          </div>
         )}
       </div>
       <div
-        className={`w-full h-[48px] bg-stone-800 rounded-md gpt-shadow mt-auto px-[12px] flex items-center ${
+        className={`w-full h-[48px] bg-stone-800 rounded-md gpt-shadow mt-auto px-4 flex items-center ${
           !isQueGenerated && "end-cursor"
         }`}
       >
