@@ -2,6 +2,7 @@ import React, { RefObject, useEffect, useState } from "react";
 import AboutMe from "./about_me/about_me";
 import CommingSoon from "./coming_soon/coming_soon";
 import JsonPritter from "./json_prettier/json_prettier";
+import PhotoEditor from "./photo_editor/photo_editor";
 
 enum eSubject {
   "About Me" = 0,
@@ -104,9 +105,7 @@ export default function LayerBottom({
             />
           )}
           {subject == eSubject["JSON Prettier"] && <JsonPritter />}
-          {subject == eSubject["Photo Editor"] && (
-            <CommingSoon subject={eSubject[2]} />
-          )}
+          {subject == eSubject["Photo Editor"] && <PhotoEditor />}
           {subject == eSubject["Mini Game"] && (
             <CommingSoon subject={eSubject[3]} />
           )}

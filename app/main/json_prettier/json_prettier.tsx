@@ -1,4 +1,4 @@
-import { sampleJson } from "@/app/components";
+import { SAMPLE_JSON } from "@/app/components";
 import React, { useState } from "react";
 import PrettierViewer from "./prettier_viewer";
 import TreeViewer from "./tree_viewer";
@@ -48,8 +48,8 @@ export default function JsonPritter() {
           <button
             className={`py-2 px-6`}
             onClick={() => {
-              setInputJson(sampleJson);
-              onChangeJson(sampleJson);
+              setInputJson(SAMPLE_JSON);
+              onChangeJson(SAMPLE_JSON);
             }}
           >
             Sample
@@ -64,7 +64,7 @@ export default function JsonPritter() {
             onChangeJson(e.target.value);
           }}
           className={`p-4 text-lg bg-gray-200 h-[420px] lg:h-[300px] w-full`}
-          placeholder={sampleJson}
+          placeholder={SAMPLE_JSON}
           value={inputJson}
         />
       </div>

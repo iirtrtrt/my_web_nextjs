@@ -1,4 +1,4 @@
-import { introduction, quesetion } from "@/app/components";
+import { INTRODUCTION, QUESTION } from "@/app/components";
 import { getRandomInt } from "@/functions/getRandomInt";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -33,17 +33,17 @@ export default function AboutMe({
         return;
       }
 
-      if (queGenerator.length >= quesetion.length && !isQueGenerated) {
+      if (queGenerator.length >= QUESTION.length && !isQueGenerated) {
         setIsQueGenerated(true);
       }
 
-      if (ansGenerator.length >= introduction.length && !isGenerated) {
+      if (ansGenerator.length >= INTRODUCTION.length && !isGenerated) {
         setIsGenerated(true);
       }
 
       if (!isQueGenerated) {
         const timeout = setTimeout(() => {
-          setQueGenerator(quesetion.slice(0, queGenerator.length + 1));
+          setQueGenerator(QUESTION.slice(0, queGenerator.length + 1));
         }, getRandomInt(160));
 
         return () => clearTimeout(timeout);
@@ -51,7 +51,7 @@ export default function AboutMe({
         const timeout = setTimeout(
           () => {
             setAnsGenerator(
-              introduction.slice(0, ansGenerator.length + getRandomInt(10))
+              INTRODUCTION.slice(0, ansGenerator.length + getRandomInt(10))
             );
             setDelay(false);
           },
