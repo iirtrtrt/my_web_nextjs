@@ -93,6 +93,7 @@ export default function ImageEditor() {
       if (backgroundImage) {
         const image = new Image();
         image.onload = () => {
+          newCtx!.filter = getImageStyle().filter;
           newCtx?.drawImage(image, 0, 0, canvas.width, canvas.height);
           newCtx?.drawImage(canvas, 0, 0, canvas.width, canvas.height);
           link.href = newCanvas.toDataURL("image/png");
@@ -100,7 +101,8 @@ export default function ImageEditor() {
         };
         image.src = backgroundImage;
       } else {
-        newCtx!.drawImage(canvas, 0, 0, canvas.width, canvas.height);
+        newCtx!.filter = getImageStyle().filter;
+        newCtx?.drawImage(canvas, 0, 0, canvas.width, canvas.height);
         link.href = newCanvas.toDataURL("image/png");
         link.click();
       }
@@ -116,7 +118,9 @@ export default function ImageEditor() {
   }: React.ChangeEvent<HTMLInputElement>) => {
     setOptions((prevOptions) => {
       return prevOptions.map((option, index) => {
-        if (index !== selectedOptionIndex) return option;
+        if (index !== selectedOptionIndex) {
+          return option;
+        }
         return { ...option, value: parseInt(target.value) };
       });
     });
@@ -160,19 +164,33 @@ export default function ImageEditor() {
             handleChange={handleSliderChange}
           />
         </div>
-        <div className={`flex flex-1 lg:flex-col`}>
-          {options.map((option, index) => {
-            return (
-              <FeatureBtn
-                key={index}
-                name={option.name}
-                active={index === selectedOptionIndex}
-                handleClick={() => setSelectedOptionIndex(index)}
-              />
-            );
-          })}
-          <button onClick={handleUndoClick}>Undo drawing</button>
-          <button onClick={handleExportClick}>Export</button>
+        <div className={`flex lg:flex-1 flex-col lg:ml-4`}>
+          <div className="flex lg:flex-col lg:mb-auto flex-wrap">
+            {options.map((option, index) => {
+              return (
+                <FeatureBtn
+                  key={index}
+                  name={option.name}
+                  active={index === selectedOptionIndex}
+                  handleClick={() => setSelectedOptionIndex(index)}
+                />
+              );
+            })}
+          </div>
+          <div className="flex lg:flex-col flex-row-reverse">
+            <FeatureBtn
+              name={"Export"}
+              active={false}
+              handleClick={() => handleExportClick()}
+              isExportBtn={true}
+            />
+            <FeatureBtn
+              name={"Undo"}
+              active={false}
+              handleClick={() => handleUndoClick()}
+              isUndoBtn={true}
+            />
+          </div>
         </div>
       </div>
     </div>
