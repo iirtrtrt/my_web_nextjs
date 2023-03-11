@@ -26,7 +26,7 @@ export const SAMPLE_JSON = `{
   }
 }`;
 
-export const FILE_TYPES = ["JPEG", "PNG", "GIF"];
+export const FILE_TYPES = [".jpeg", ".png", ".gif"];
 
 export const DEFAULT_OPTIONS = [
   {

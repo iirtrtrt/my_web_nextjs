@@ -33,7 +33,7 @@ export default function LayerTop({
     }
   };
 
-  const scrollDown = () => {
+  const handleScrollDownClick = () => {
     layerBottomRef.current?.scrollIntoView({
       behavior: "smooth",
     });
@@ -57,7 +57,7 @@ export default function LayerTop({
     }
   };
 
-  const hideEsterEgg = () => {
+  const handleEsterEggClick = () => {
     setTopPersent("-50%");
     setTimeout(() => setEsterEgg(0), 3000);
   };
@@ -77,7 +77,7 @@ export default function LayerTop({
       </div>
       <Lottie
         animationData={scrollDownBtn}
-        onClick={() => scrollDown()}
+        onClick={() => handleScrollDownClick()}
         className="scroll-down-btn"
       />
       <div className="instruction hide-mobile">
@@ -89,7 +89,7 @@ export default function LayerTop({
         <div
           className="ester-egg"
           style={{ top: topPersent }}
-          onClick={() => hideEsterEgg()}
+          onClick={() => handleEsterEggClick()}
         >
           <Lottie animationData={esterEggAnimation} />
         </div>

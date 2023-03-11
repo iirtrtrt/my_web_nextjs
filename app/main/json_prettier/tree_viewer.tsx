@@ -12,7 +12,7 @@ export default function TreeNode({ data, ml = false }: any) {
     if (typeof child === "object" && child !== null) {
       return <TreeNode key={index} data={child} ml={true} />;
     }
-    console.log(typeof child);
+    // console.log(typeof child);
     if (typeof child === "string") {
       return `"${String(child)}"`;
     }
