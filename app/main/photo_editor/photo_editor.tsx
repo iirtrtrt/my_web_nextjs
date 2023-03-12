@@ -93,8 +93,6 @@ export default function ImageEditor() {
       link.href = dataUrl;
 
       if (backgroundImage) {
-        console.log(`imagesize = ${imageSize?.width} ${imageSize?.height}`);
-        console.log(`canvas = ${canvas.width} ${canvas.height}`);
         const newCanvas = document.createElement("canvas");
         newCanvas.width = canvasSize!.width;
         newCanvas.height = canvasSize!.height;
