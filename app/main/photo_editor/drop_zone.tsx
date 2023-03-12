@@ -3,13 +3,24 @@ import { useDropzone } from "react-dropzone";
 
 export default function DropZone({
   setBackgroundImage,
+  setImageSize,
 }: {
   setBackgroundImage: (val: string | null) => void;
+  setImageSize: (size: { width: number; height: number }) => void;
 }) {
   const handleDropAccepted = (acceptedFiles: File[]) => {
     const reader = new FileReader();
-    reader.onload = () => {
-      setBackgroundImage(reader.result as string);
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        setBackgroundImage(reader.result as string);
+        setImageSize({ width: img.width, height: img.height });
+        // console.log(img.width);
+        // console.log(img.height);
+      };
+      if (e.target) {
+        img.src = e.target.result as string;
+      }
     };
     reader.readAsDataURL(acceptedFiles[0]);
   };

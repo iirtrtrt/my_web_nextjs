@@ -17,6 +17,14 @@ export default function ImageEditor() {
 
   const { setCanvasRef, onCanvasMouseDown } = useOnDraw(onDraw);
   const [backgroundImage, setBackgroundImage] = useState<string | null>(null);
+  const [imageSize, setImageSize] = useState<{
+    width: number;
+    height: number;
+  }>();
+  const [canvasSize, setCanvasSize] = useState<{
+    width: number;
+    height: number;
+  }>();
   const [drawingHistory, setDrawingHistory] = useState<
     { start: { x: number; y: number }; end: { x: number; y: number } }[]
   >([]);
@@ -84,23 +92,35 @@ export default function ImageEditor() {
       link.download = "canvas.png";
       link.href = dataUrl;
 
-      const newCanvas = document.createElement("canvas");
-      newCanvas.width = canvas.width;
-      newCanvas.height = canvas.height;
-
-      const newCtx = newCanvas.getContext("2d");
-
       if (backgroundImage) {
+        console.log(`imagesize = ${imageSize?.width} ${imageSize?.height}`);
+        console.log(`canvas = ${canvas.width} ${canvas.height}`);
+        const newCanvas = document.createElement("canvas");
+        newCanvas.width = canvasSize!.width;
+        newCanvas.height = canvasSize!.height;
+
+        const newCtx = newCanvas.getContext("2d");
         const image = new Image();
         image.onload = () => {
           newCtx!.filter = getImageStyle().filter;
-          newCtx?.drawImage(image, 0, 0, canvas.width, canvas.height);
-          newCtx?.drawImage(canvas, 0, 0, canvas.width, canvas.height);
+          newCtx?.drawImage(image, 0, 0, canvasSize!.width, canvasSize!.height);
+          newCtx?.drawImage(
+            canvas,
+            0,
+            0,
+            canvasSize!.width,
+            canvasSize!.height
+          );
           link.href = newCanvas.toDataURL("image/png");
           link.click();
         };
         image.src = backgroundImage;
       } else {
+        const newCanvas = document.createElement("canvas");
+        newCanvas.width = canvas.width;
+        newCanvas.height = canvas.height;
+
+        const newCtx = newCanvas.getContext("2d");
         newCtx!.filter = getImageStyle().filter;
         newCtx?.drawImage(canvas, 0, 0, canvas.width, canvas.height);
         link.href = newCanvas.toDataURL("image/png");
@@ -134,8 +154,24 @@ export default function ImageEditor() {
     return { filter: filters.join(" ") };
   };
 
-  const [squareRef, { width, height }] = useElementSize();
-  useEffect(() => {}, [width]);
+  const [squareRef, { width }] = useElementSize();
+  useEffect(() => {
+    if (backgroundImage) {
+      if (width >= imageSize!.width) {
+        const ratio = width / imageSize!.width;
+        setCanvasSize({
+          width: imageSize!.width * ratio,
+          height: imageSize!.height * ratio,
+        });
+      } else {
+        const ratio = imageSize!.width / width;
+        setCanvasSize({
+          width: imageSize!.width / ratio,
+          height: imageSize!.height / ratio,
+        });
+      }
+    }
+  }, [backgroundImage, width]);
 
   return (
     <div
@@ -143,11 +179,14 @@ export default function ImageEditor() {
     >
       <div className={`flex flex-col lg:flex-row`}>
         <div ref={squareRef} className={`lg:w-[76%]`}>
-          <DropZone setBackgroundImage={setBackgroundImage} />
+          <DropZone
+            setBackgroundImage={setBackgroundImage}
+            setImageSize={setImageSize}
+          />
           <canvas
             ref={setCanvasRef}
-            width={width}
-            height={width}
+            width={backgroundImage ? canvasSize?.width : width}
+            height={backgroundImage ? canvasSize?.height : width}
             onMouseDown={onCanvasMouseDown}
             style={{
               ...getImageStyle(),
@@ -155,7 +194,11 @@ export default function ImageEditor() {
                 ? { backgroundImage: `url(${backgroundImage})` }
                 : {}),
             }}
-            className={`bg-no-repeat bg-contain bg-center border-black border-2 w-[${width}px] h-[${width}px] max-w-full my-4`}
+            className={`bg-no-repeat bg-contain bg-center border-black border-2 w-[${
+              backgroundImage ? canvasSize?.width : width
+            }px] h-[${
+              backgroundImage ? imageSize!.height ?? width : width
+            }px] max-w-full my-4`}
           />
           <Slider
             min={selectedOption.range.min}
@@ -179,16 +222,16 @@ export default function ImageEditor() {
           </div>
           <div className="flex lg:flex-col flex-row-reverse">
             <FeatureBtn
-              name={"Export"}
-              active={false}
-              handleClick={() => handleExportClick()}
-              isExportBtn={true}
-            />
-            <FeatureBtn
               name={"Undo"}
               active={false}
               handleClick={() => handleUndoClick()}
               isUndoBtn={true}
+            />
+            <FeatureBtn
+              name={"Export"}
+              active={false}
+              handleClick={() => handleExportClick()}
+              isExportBtn={true}
             />
           </div>
         </div>
