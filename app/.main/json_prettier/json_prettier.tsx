@@ -4,8 +4,8 @@ import PrettierViewer from "./prettier_viewer";
 import TreeViewer from "./tree_viewer";
 
 enum eViewer {
-  "Tree Viewer" = 0,
-  "Prettier Viewer" = 1,
+  "TreeViewer" = 0,
+  "PrettierViewer" = 1,
 }
 
 export default function JsonPritter() {
@@ -82,18 +82,18 @@ export default function JsonPritter() {
           <button
             disabled={isDisabled}
             className={`text-sm text-white py-2 px-6 rounded-xl disabled:opacity-25 mr-4 ${
-              viewer == eViewer["Tree Viewer"] ? "bg-sky-900" : "bg-sky-600"
+              viewer == eViewer["TreeViewer"] ? "bg-sky-900" : "bg-sky-600"
             }`}
-            onClick={() => setViewer(eViewer["Tree Viewer"])}
+            onClick={() => setViewer(eViewer["TreeViewer"])}
           >
             {eViewer[0]}
           </button>
           <button
             disabled={isDisabled}
             className={`text-sm text-white py-2 px-6 rounded-xl disabled:opacity-25 ${
-              viewer == eViewer["Prettier Viewer"] ? "bg-sky-900" : "bg-sky-600"
+              viewer == eViewer["PrettierViewer"] ? "bg-sky-900" : "bg-sky-600"
             }`}
-            onClick={() => setViewer(eViewer["Prettier Viewer"])}
+            onClick={() => setViewer(eViewer["PrettierViewer"])}
           >
             {eViewer[1]}
           </button>
@@ -102,8 +102,8 @@ export default function JsonPritter() {
       <div
         className={`p-4 text-lg rounded-md bg-stone-800 min-h-[420px] lg:min-h-[300px] overflow-auto whitespace-nowrap text-white`}
       >
-        {viewer == eViewer["Tree Viewer"] && <TreeViewer data={json} />}
-        {viewer == eViewer["Prettier Viewer"] && <PrettierViewer data={json} />}
+        {viewer == eViewer["TreeViewer"] && <TreeViewer data={json} />}
+        {viewer == eViewer["PrettierViewer"] && <PrettierViewer data={json} />}
       </div>
     </div>
   );

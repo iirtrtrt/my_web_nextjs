@@ -1,4 +1,4 @@
-import { Item } from "../interface";
+import { Item } from "./interface";
 
 export default function ItemCard({
   item,
@@ -17,7 +17,7 @@ export default function ItemCard({
 
   return (
     <div
-      className={`w-full h-[56px] my-4 border-solid border-4 rounded-3xl p-2 flex justify-center item-center ${
+      className={`md:w-full w-[120px] md:h-[56px] h-[48px] md:my-4 m-2 border-solid border-4 rounded-2xl p-2 flex justify-center item-center ${
         isDraggable
           ? "bg-stone-800 border-stone-400 cursor-grab"
           : "bg-stone-900 border-stone-800 text-stone-700"
