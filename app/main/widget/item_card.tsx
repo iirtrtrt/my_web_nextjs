@@ -14,15 +14,15 @@ export default function ItemCard({
     handleDragging(true);
   };
   const handleDragEnd = () => handleDragging(false);
-  
+
   return (
     <div
-      className={`w-[92%] h-[80px] bg-red-500 m-4`}
+      className={`w-full h-[56px] bg-red-500 my-4 border-solid border-4 rounded-3xl p-2 flex justify-center item-center`}
       draggable={isDraggable}
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
-      {item.title}
+      <p className={``}>{item.title}</p>
     </div>
   );
 }

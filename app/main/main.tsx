@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { Item } from "./interface";
 import "./main.css";
@@ -28,19 +29,27 @@ export default function Main() {
     setCurrentTitle(items[id].title);
     handleDragging(false);
   };
+
   return (
-    <main className={`w-full h-full flex justify-center item-center`}>
-      <div className={`w-9/12 bg-black py-8`}>
-        <div className={`h-full flex flex-row bg-white`}>
+    <main className={`w-full h-full flex flex-col justify-center item-center`}>
+      <div
+        className={`flex flex-1 flex-col xl:mx-48 lg:mx-24 md:mx-12 bg-zinc-200 md:py-8 py-2`}
+      >
+        <div className={`flex flex-1 md:flex-row flex-col bg-white`}>
           <div
-            className={`w-full bg-zinc-400`}
+            className={`w-full flex flex-col bg-zinc-400 h-full`}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
           >
-            {onShowing}
-          </div>
-          <div className={`w-4/12`}>
             <div>{currentTitle}</div>
+            <div
+              className={`flex-1 border-solid border-4 rounded-3xl p-2 bg-zinc-800`}
+            >
+              {onShowing}
+            </div>
+          </div>
+          <div className={`w-3/12 px-4 flex md:flex-col`}>
+            <div>Drag and Drop to the left</div>
             {items.map((item) => (
               <ItemCard
                 item={item}
