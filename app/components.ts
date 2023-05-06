@@ -1,5 +1,5 @@
 export const INTRODUCTION =
-  "Taekyung Kim is a student from South Korea studying Computer Science at Latvia University.\nHe did his internship in Mobile application development using Flutter and also experienced AWS and GitHub Actions.\nHe has been studying himself Full-stack development with Nextjs, Reactjs, Nodejs, and Django. Plus, he started being interested in data field.\n\nJS, TS, C/C++, Python, Java, Rust, Dart, and SQL... These are his languages, maybe there are more.\nTherefore, I think that he can be in any position of work. :D\n\nHere you can see his Linkedin and GitHub.\nFeel free to go and check!";
+  "Taekyung Kim is a student from South Korea studying Computer Science at Latvia University.\nHe did his internship in Mobile application development using Flutter and also experienced AWS and GitHub Actions.\nHe has been studying himself Full-stack development with Nextjs, Reactjs, Nodejs, and Django.\n\nJS, TS, C/C++, Python, Java, Rust, Dart, and SQL... These are his languages, maybe there are more.\nTherefore, I think that he can be in any position. :D\n\nHere you can see his Linkedin and GitHub.\nFeel free to go and check!";
 
 export const QUESTION = "Who is Taekyung Kim?";
 
@@ -27,17 +27,6 @@ export const SAMPLE_JSON = `{
 }`;
 
 export const FILE_TYPES = [".jpeg", ".jpg", ".png", ".gif"];
-
-export interface iMenuProps {
-  id: number;
-  title: string;
-}
-
-export const MENUS: iMenuProps[] = [
-  { id: 0, title: "AboutMe" },
-  { id: 1, title: "Projects" },
-  { id: 2, title: "Labs" },
-];
 
 export const DEFAULT_OPTIONS = [
   {

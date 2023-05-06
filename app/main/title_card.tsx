@@ -1,6 +1,6 @@
 export default function TitleCard({ title }: { title: string }) {
   return (
-    <div className={`my-4`}>
+    <div className={`my-6`}>
       <div className={`text-2xl font-bold italic text-emerald-900 pl-2`}>
         {title}
       </div>

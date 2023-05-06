@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import AboutMe from "./about_me/about_me";
-import "./main.css";
-import FloatingButton from "./floating_button";
+// import FloatingButton from "./floating_button";
 import Labs from "./labs/labs";
 import Projects from "./projects/projects";
 
@@ -12,11 +11,15 @@ export interface iItemProps {
   title: string;
 }
 
-const items: iItemProps[] = [
-  { id: 0, title: "JsonPrettier" },
-  { id: 1, title: "PhotoEditor" },
-  { id: 2, title: "Login" },
-];
+export interface iMenuProps {
+  id: number;
+  title: string;
+}
+
+// export interface iRefProps {
+//   id: number;
+//   ref: any;
+// }
 
 export default function Main() {
   const [isGenerated, setIsGenerated] = useState(false);
@@ -40,7 +43,7 @@ export default function Main() {
         <Projects />
         <Labs />
       </div>
-      <FloatingButton />
+      {/* <FloatingButton /> */}
     </main>
   );
 }

@@ -1,7 +1,8 @@
-import { INTRODUCTION, MENUS, QUESTION } from "@/app/components";
+import { INTRODUCTION, QUESTION } from "@/app/components";
 import { getRandomInt } from "@/hooks/getRandomInt";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { menus } from "../main_data";
 import TitleCard from "../title_card";
 import "./about_me.css";
 
@@ -49,11 +50,11 @@ export default function AboutMe({
       const timeout = setTimeout(
         () => {
           setAnsGenerator(
-            INTRODUCTION.slice(0, ansGenerator.length + getRandomInt(8))
+            INTRODUCTION.slice(0, ansGenerator.length + getRandomInt(10))
           );
           setDelay(false);
         },
-        delay ? 2048 : getRandomInt(160)
+        delay ? 1792 : getRandomInt(160)
       );
 
       return () => clearTimeout(timeout);
@@ -62,7 +63,7 @@ export default function AboutMe({
 
   return (
     <div className={`min-h-screen flex flex-1 flex-col pb-4`}>
-      <TitleCard title={MENUS[0].title} />
+      <TitleCard title={menus[0].title} />
       {isQueGenerated && (
         <div className={`p-4 bg-stone-800 flex`}>
           <img
@@ -106,16 +107,16 @@ export default function AboutMe({
       <div
         className={`lg:w-[600px] md:w-[480px] sm:w-[360px] w-[300px] h-[48px] mx-auto mt-auto bg-stone-800 rounded-md gpt-shadow px-4 flex items-center`}
       >
-        <div className={` ${!isQueGenerated && "end-cursor"}`}>
+        <div className={`${!isQueGenerated && "end-cursor"}`}>
           {queGenerator}
         </div>
         <svg
           stroke="currentColor"
           fill="none"
-          stroke-width="2"
+          strokeWidth="2"
           viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className={`mr-1 ml-auto`}
           height="1em"
           width="1em"

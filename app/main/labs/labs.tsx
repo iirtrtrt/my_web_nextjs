@@ -5,7 +5,7 @@ import PhotoEditor from "./photo_editor/photo_editor";
 import JsonPritter from "./json_prettier/json_prettier";
 import ItemCard from "./item_card";
 import TitleCard from "../title_card";
-import { MENUS } from "@/app/components";
+import { menus } from "../main_data";
 
 export interface iItemProps {
   id: number;
@@ -37,7 +37,7 @@ export default function Labs() {
 
   return (
     <div className={`min-h-screen flex flex-1 flex-col pb-2 lg:pb-4`}>
-      <TitleCard title={MENUS[2].title} />
+      <TitleCard title={menus[2].title} />
       <div className={`flex flex-1 md:flex-row flex-col`}>
         <div
           className={`w-full flex flex-1 flex-col`}
@@ -54,6 +54,7 @@ export default function Labs() {
           >
             {onShowing == 0 && <JsonPritter />}
             {onShowing == 1 && <PhotoEditor />}
+            {onShowing == 2 && `ComingSoon`}
           </div>
         </div>
         <div className={`md:w-3/12 px-4 flex md:flex-col w-full flex-wrap`}>
@@ -62,6 +63,7 @@ export default function Labs() {
           </div>
           {items.map((item) => (
             <ItemCard
+              key={item.id}
               item={item}
               isDraggable={onShowing != item.id}
               handleDragging={handleDragging}
