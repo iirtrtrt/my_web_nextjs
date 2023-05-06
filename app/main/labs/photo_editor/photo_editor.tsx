@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useOnDraw } from "../../../functions/useOnDraw";
 import DropZone from "./drop_zone";
 import Slider from "./slider";
 import { useElementSize } from "usehooks-ts";
 import { DEFAULT_OPTIONS } from "@/app/components";
 import FeatureBtn from "./feature_btn";
+import { useOnDraw } from "@/hooks/useOnDraw";
 
 export default function ImageEditor() {
   const onDraw = (

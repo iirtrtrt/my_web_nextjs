@@ -1,7 +1,8 @@
-import { INTRODUCTION, QUESTION } from "@/app/components";
-import { getRandomInt } from "@/functions/getRandomInt";
+import { INTRODUCTION, MENUS, QUESTION } from "@/app/components";
+import { getRandomInt } from "@/hooks/getRandomInt";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import TitleCard from "../title_card";
 import "./about_me.css";
 
 export default function AboutMe({
@@ -60,10 +61,14 @@ export default function AboutMe({
   }, [ansGenerator, isGenerated, queGenerator, isQueGenerated, delay]);
 
   return (
-    <div className={`w-full flex flex-1 flex-col pb-2`}>
+    <div className={`min-h-screen flex flex-1 flex-col pb-4`}>
+      <TitleCard title={MENUS[0].title} />
       {isQueGenerated && (
-        <div className={`px-4 py-2 bg-stone-800 flex rounded-t-2xl`}>
-          <div className={`bg-black w-[32px] h-[32px] mr-8`}></div>
+        <div className={`p-4 bg-stone-800 flex`}>
+          <img
+            src="android-icon-36x36.png"
+            className={`w-[32px] h-[32px] mr-8`}
+          />
           <div className={`flex-1`}>
             <pre
               className={`whitespace-pre-wrap break-normal ${

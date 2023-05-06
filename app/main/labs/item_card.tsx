@@ -1,11 +1,11 @@
-import { Item } from "./interface";
+import { iItemProps } from "../main";
 
 export default function ItemCard({
   item,
   isDraggable,
   handleDragging,
 }: {
-  item: Item;
+  item: iItemProps;
   isDraggable: boolean;
   handleDragging: (dragging: boolean) => void;
 }) {

@@ -26,7 +26,18 @@ export const SAMPLE_JSON = `{
   }
 }`;
 
-export const FILE_TYPES = [".jpeg", ".png", ".gif"];
+export const FILE_TYPES = [".jpeg", ".jpg", ".png", ".gif"];
+
+export interface iMenuProps {
+  id: number;
+  title: string;
+}
+
+export const MENUS: iMenuProps[] = [
+  { id: 0, title: "AboutMe" },
+  { id: 1, title: "Projects" },
+  { id: 2, title: "Labs" },
+];
 
 export const DEFAULT_OPTIONS = [
   {
