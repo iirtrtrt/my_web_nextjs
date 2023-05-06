@@ -1,7 +1,9 @@
 import { INTRODUCTION, QUESTION } from "@/app/components";
-import { getRandomInt } from "@/functions/getRandomInt";
+import { getRandomInt } from "@/hooks/getRandomInt";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { menus } from "../main_data";
+import TitleCard from "../title_card";
 import "./about_me.css";
 
 export default function AboutMe({
@@ -13,7 +15,6 @@ export default function AboutMe({
   setIsQueGenerated,
   queGenerator,
   setQueGenerator,
-  isOnAboutMe,
 }: {
   isGenerated: boolean;
   setIsGenerated: (val: boolean) => void;
@@ -23,92 +24,107 @@ export default function AboutMe({
   setIsQueGenerated: (val: boolean) => void;
   queGenerator: string;
   setQueGenerator: (val: string) => void;
-  isOnAboutMe: boolean;
 }) {
   const [delay, setDelay] = useState(true);
 
   useEffect(() => {
-    if (isOnAboutMe) {
-      if (isGenerated) {
-        return;
-      }
-
-      if (queGenerator.length >= QUESTION.length && !isQueGenerated) {
-        setIsQueGenerated(true);
-      }
-
-      if (ansGenerator.length >= INTRODUCTION.length && !isGenerated) {
-        setIsGenerated(true);
-      }
-
-      if (!isQueGenerated) {
-        const timeout = setTimeout(() => {
-          setQueGenerator(QUESTION.slice(0, queGenerator.length + 1));
-        }, getRandomInt(160));
-
-        return () => clearTimeout(timeout);
-      } else {
-        const timeout = setTimeout(
-          () => {
-            setAnsGenerator(
-              INTRODUCTION.slice(0, ansGenerator.length + getRandomInt(10))
-            );
-            setDelay(false);
-          },
-          delay ? 1280 : getRandomInt(160)
-        );
-
-        return () => clearTimeout(timeout);
-      }
+    if (isGenerated) {
+      return;
     }
-  }, [
-    ansGenerator,
-    isGenerated,
-    queGenerator,
-    isQueGenerated,
-    delay,
-    isOnAboutMe,
-  ]);
+
+    if (queGenerator.length >= QUESTION.length && !isQueGenerated) {
+      setIsQueGenerated(true);
+    }
+
+    if (ansGenerator.length >= INTRODUCTION.length && !isGenerated) {
+      setIsGenerated(true);
+    }
+
+    if (!isQueGenerated) {
+      const timeout = setTimeout(() => {
+        setQueGenerator(QUESTION.slice(0, queGenerator.length + 1));
+      }, getRandomInt(160));
+
+      return () => clearTimeout(timeout);
+    } else {
+      const timeout = setTimeout(
+        () => {
+          setAnsGenerator(
+            INTRODUCTION.slice(0, ansGenerator.length + getRandomInt(10))
+          );
+          setDelay(false);
+        },
+        delay ? 1792 : getRandomInt(160)
+      );
+
+      return () => clearTimeout(timeout);
+    }
+  }, [ansGenerator, isGenerated, queGenerator, isQueGenerated, delay]);
 
   return (
-    <div className={`text-white flex flex-1 flex-col`}>
-      <div className={`bg-stone-700 px-4 gpt-shadow rounded-md mb-4`}>
-        <pre
-          className={`whitespace-pre-wrap break-normal ${
-            isQueGenerated && "end-cursor py-4"
-          }`}
-        >
-          {ansGenerator}
-        </pre>
-        {isGenerated && (
-          <div className={`grid grid-cols-2 gap-2 h-300px mb-3 font-medium`}>
-            <Link
-              href={`https://www.linkedin.com/in/taekyung-kim-5757a4208/`}
-              className={`flex flex-col p-1 hover:p-0 ease-in-out duration-300`}
+    <div className={`min-h-screen flex flex-1 flex-col pb-4`}>
+      <TitleCard title={menus[0].title} />
+      {isQueGenerated && (
+        <div className={`p-4 bg-stone-800 flex`}>
+          <img
+            src="android-icon-36x36.png"
+            className={`w-[32px] h-[32px] mr-8`}
+          />
+          <div className={`flex-1`}>
+            <pre
+              className={`whitespace-pre-wrap break-normal ${
+                isQueGenerated && "end-cursor"
+              }`}
             >
-              Linkedin
-              <div
-                className={`bg-[url('/assets/about_me_linkedin.png')] rounded-md p-16 bg-cover blur-[1px] hover:blur-[0px]`}
-              ></div>
-            </Link>
-            <Link
-              href={`https://github.com/iirtrtrt`}
-              className={`flex flex-col p-1 hover:p-0 ease-in-out duration-300`}
-            >
-              GitHub
-              <div
-                className={`bg-[url('/assets/about_me_github.png')] rounded-md p-16 bg-cover blur-[1px] hover:blur-[0px]`}
-              ></div>
-            </Link>
+              {ansGenerator}
+            </pre>
           </div>
-        )}
-      </div>
+        </div>
+      )}
+
+      {isGenerated && (
+        <div className={`grid grid-cols-2 gap-2 mb-3 font-medium p-4`}>
+          <Link
+            href={`https://www.linkedin.com/in/taekyung-kim-5757a4208/`}
+            className={`flex flex-col p-1 hover:p-0 ease-in-out duration-300`}
+          >
+            Linkedin
+            <div
+              className={`bg-[url('/assets/about_me_linkedin.png')] rounded-md p-16 bg-cover blur-[1px] hover:blur-[0px]`}
+            ></div>
+          </Link>
+          <Link
+            href={`https://github.com/iirtrtrt`}
+            className={`flex flex-col p-1 hover:p-0 ease-in-out duration-300`}
+          >
+            GitHub
+            <div
+              className={`bg-[url('/assets/about_me_github.png')] rounded-md p-16 bg-cover blur-[1px] hover:blur-[0px]`}
+            ></div>
+          </Link>
+        </div>
+      )}
       <div
-        className={`w-full h-[48px] bg-stone-800 rounded-md gpt-shadow mt-auto px-4 flex items-center ${
-          !isQueGenerated && "end-cursor"
-        }`}
+        className={`lg:w-[600px] md:w-[480px] sm:w-[360px] w-[300px] h-[48px] mx-auto mt-auto bg-stone-800 rounded-md gpt-shadow px-4 flex items-center`}
       >
-        {queGenerator}
+        <div className={`${!isQueGenerated && "end-cursor"}`}>
+          {queGenerator}
+        </div>
+        <svg
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={`mr-1 ml-auto`}
+          height="1em"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
       </div>
     </div>
   );

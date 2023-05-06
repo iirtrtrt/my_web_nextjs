@@ -1,3 +1,5 @@
+import "./photo_editor.css";
+
 export default function Slider({ min, max, value, handleChange }: any) {
   return (
     <div>

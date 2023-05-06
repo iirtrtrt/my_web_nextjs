@@ -15,8 +15,6 @@ export default function DropZone({
       img.onload = () => {
         setBackgroundImage(reader.result as string);
         setImageSize({ width: img.width, height: img.height });
-        // console.log(img.width);
-        // console.log(img.height);
       };
       if (e.target) {
         img.src = e.target.result as string;
@@ -34,7 +32,7 @@ export default function DropZone({
 
   return (
     <div
-      className={`border-sky-300 hover:border-sky-600 border-dotted border-2 h-10 flex justify-center items-center cursor-pointer text-sky-300 hover:text-sky-600 rounded-md`}
+      className={`border-emerald-300 hover:border-emerald-600 border-dotted border-2 h-8 flex justify-center items-center cursor-pointer text-emerald-300 hover:text-emerald-600 rounded-md`}
       {...getRootProps()}
     >
       <input {...getInputProps()} />

@@ -25,7 +25,7 @@ export default function TreeNode({ data, ml = false }: any) {
     return (
       <>
         <span
-          className={`cursor-pointer hover:text-sky-800`}
+          className={`cursor-pointer hover:text-emerald-600`}
           onClick={handleClick}
         >
           {isExpanded ? "⏷" : "⏵"} Object {!isExpanded && "[" + keyLength + "]"}
@@ -47,7 +47,7 @@ export default function TreeNode({ data, ml = false }: any) {
     return (
       <>
         <span
-          className={`cursor-pointer hover:text-sky-800`}
+          className={`cursor-pointer hover:text-emerald-600`}
           onClick={handleClick}
         >
           {isExpanded ? "⏷" : "⏵"} Array{" "}

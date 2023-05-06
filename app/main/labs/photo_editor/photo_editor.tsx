@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useOnDraw } from "../../../functions/useOnDraw";
 import DropZone from "./drop_zone";
 import Slider from "./slider";
 import { useElementSize } from "usehooks-ts";
 import { DEFAULT_OPTIONS } from "@/app/components";
 import FeatureBtn from "./feature_btn";
+import { useOnDraw } from "@/hooks/useOnDraw";
 
 export default function ImageEditor() {
   const onDraw = (
@@ -173,7 +173,7 @@ export default function ImageEditor() {
 
   return (
     <div
-      className={`flex flex-1 flex-col bg-stone-900 rounded-md text-white p-4`}
+      className={`flex flex-1 flex-col bg-stone-900 rounded-2xl text-white p-4`}
     >
       <div className={`flex flex-col lg:flex-row`}>
         <div ref={squareRef} className={`lg:w-[76%]`}>
@@ -196,7 +196,7 @@ export default function ImageEditor() {
               backgroundImage ? canvasSize?.width : width
             }px] h-[${
               backgroundImage ? imageSize!.height ?? width : width
-            }px] max-w-full my-4`}
+            }px] max-w-full my-2`}
           />
           <Slider
             min={selectedOption.range.min}
