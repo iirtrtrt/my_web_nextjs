@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import AboutMe from "./about_me/about_me";
-// import FloatingButton from "./floating_button";
+import FloatingButton from "./floating_button";
 import Labs from "./labs/labs";
 import Projects from "./projects/projects";
 
@@ -16,16 +16,16 @@ export interface iMenuProps {
   title: string;
 }
 
-// export interface iRefProps {
-//   id: number;
-//   ref: any;
-// }
-
 export default function Main() {
   const [isGenerated, setIsGenerated] = useState(false);
   const [isQueGenerated, setIsQueGenerated] = useState(false);
   const [ansGenerator, setAnsGenerator] = useState("");
   const [queGenerator, setQueGenerator] = useState("");
+  
+  const refAboutMe = useRef<HTMLDivElement>(null);
+  const refProjects = useRef<HTMLDivElement>(null);
+  const refLabs = useRef<HTMLDivElement>(null);
+  const refs = [refAboutMe, refProjects, refLabs];
 
   return (
     <main className={`w-full bg-stone-950`}>
@@ -39,11 +39,12 @@ export default function Main() {
           setIsQueGenerated={setIsQueGenerated}
           queGenerator={queGenerator}
           setQueGenerator={setQueGenerator}
+          ref={refAboutMe}
         />
-        <Projects />
-        <Labs />
+        <Projects ref={refProjects} />
+        <Labs ref={refLabs} />
       </div>
-      {/* <FloatingButton /> */}
+      <FloatingButton refs={refs} />
     </main>
   );
 }

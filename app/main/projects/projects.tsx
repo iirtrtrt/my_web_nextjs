@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { forwardRef, RefObject } from "react";
 import { menus } from "../main_data";
 import TitleCard from "../title_card";
 import ProjectCard from "./porject_card";
@@ -12,13 +12,15 @@ export interface iProjectProps {
   git_link: string;
 }
 
-export default function Projects() {
+const Projects = forwardRef<HTMLDivElement>((props, ref) => {
   return (
     <div className={`min-h-screen flex flex-1 flex-col`}>
-      <TitleCard title={menus[1].title} />
+      <TitleCard title={menus[1].title} ref={ref} />
       {projects.map((project) => (
         <ProjectCard key={project.id} project={project} />
       ))}
     </div>
   );
-}
+});
+
+export default Projects;
