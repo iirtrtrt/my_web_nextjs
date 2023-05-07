@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import PhotoEditor from "./photo_editor/photo_editor";
 import JsonPritter from "./json_prettier/json_prettier";
 import ItemCard from "./item_card";
@@ -18,7 +18,7 @@ const items: iItemProps[] = [
   { id: 2, title: "Login" },
 ];
 
-export default function Labs() {
+const Labs = forwardRef<HTMLDivElement>((props, ref) => {
   const [onShowing, setOnShowing] = useState(0);
   const [currentTitle, setCurrentTitle] = useState(items[0].title);
   const [isDragging, setIsDragging] = useState(false);
@@ -37,7 +37,7 @@ export default function Labs() {
 
   return (
     <div className={`min-h-screen flex flex-1 flex-col pb-2 lg:pb-4`}>
-      <TitleCard title={menus[2].title} />
+      <TitleCard title={menus[2].title} ref={ref} />
       <div className={`flex flex-1 md:flex-row flex-col`}>
         <div
           className={`w-full flex flex-1 flex-col`}
@@ -73,4 +73,6 @@ export default function Labs() {
       </div>
     </div>
   );
-}
+});
+
+export default Labs;
