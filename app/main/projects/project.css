@@ -1,0 +1,18 @@
+@keyframes reveal {
+  from {
+    clip-path: inset(0% 60% 0% 50%);
+  }
+  to {
+    clip-path: inset(0% 0% 0% 0%);
+  }
+}
+
+.revealing-image {
+  animation: auto linear reveal both;
+  animation-timejline: view();
+  animation-range: entry 25% cover 50%;
+}
+
+.text-balance {
+  text-wrap: balance;
+}

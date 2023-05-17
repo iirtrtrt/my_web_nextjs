@@ -5,6 +5,7 @@ import AboutMe from "./about_me/about_me";
 import FloatingButton from "./floating_button";
 import Labs from "./labs/labs";
 import Projects from "./projects/projects";
+import "./main.css";
 
 export interface iItemProps {
   id: number;

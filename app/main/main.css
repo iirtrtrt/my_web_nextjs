@@ -1,0 +1,13 @@
+@keyframes grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.red-bar {
+  animation: grow auto linear;
+  animation-timeline: scroll(root block);
+}
