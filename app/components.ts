@@ -1,7 +1,7 @@
 export const INTRODUCTION =
-  "Taekyung Kim is a student from South Korea studying Computer Science at Latvia University.\nHe did his internship in Mobile application development using Flutter and also experienced AWS and GitHub Actions.\nHe has been studying himself Full-stack development with Nextjs, Reactjs, Nodejs, and Django.\n\nJS, TS, C/C++, Python, Java, Rust, Dart, and SQL... These are his languages, maybe there are more.\nTherefore, I think that he can be in any position. :D\n\nHere you can see his Linkedin and GitHub.\nFeel free to go and check!";
+  'Taekyung Kim is a student from South Korea studying Computer Science at the University of Latvia.\nHe has experienced in Mobile and Web application development as well as deep learning.\nHe always enjoys learning new stuff with high motivations and can handle multiple programming languages.\nThese are representative of his boundless potential and guarantee that he has the ability to do well in anything. :D\n\nHere you can see his Linkedin and GitHub.\nFeel free to go and check!';
 
-export const QUESTION = "Who is Taekyung Kim?";
+export const QUESTION = 'Who is Taekyung Kim?';
 
 export const SAMPLE_JSON = `{
   "glossary": {
@@ -26,77 +26,77 @@ export const SAMPLE_JSON = `{
   }
 }`;
 
-export const FILE_TYPES = [".jpeg", ".jpg", ".png", ".gif"];
+export const FILE_TYPES = ['.jpeg', '.jpg', '.png', '.gif'];
 
 export const DEFAULT_OPTIONS = [
   {
-    name: "Brightness",
-    property: "brightness",
+    name: 'Brightness',
+    property: 'brightness',
     value: 100,
     range: {
       min: 0,
       max: 200,
     },
-    unit: "%",
+    unit: '%',
   },
   {
-    name: "Contrast",
-    property: "contrast",
+    name: 'Contrast',
+    property: 'contrast',
     value: 100,
     range: {
       min: 0,
       max: 200,
     },
-    unit: "%",
+    unit: '%',
   },
   {
-    name: "Saturation",
-    property: "saturate",
+    name: 'Saturation',
+    property: 'saturate',
     value: 100,
     range: {
       min: 0,
       max: 200,
     },
-    unit: "%",
+    unit: '%',
   },
   {
-    name: "Grayscale",
-    property: "grayscale",
+    name: 'Grayscale',
+    property: 'grayscale',
     value: 0,
     range: {
       min: 0,
       max: 100,
     },
-    unit: "%",
+    unit: '%',
   },
   {
-    name: "Sepia",
-    property: "sepia",
+    name: 'Sepia',
+    property: 'sepia',
     value: 0,
     range: {
       min: 0,
       max: 100,
     },
-    unit: "%",
+    unit: '%',
   },
   {
-    name: "Hue Rotate",
-    property: "hue-rotate",
+    name: 'Hue Rotate',
+    property: 'hue-rotate',
     value: 0,
     range: {
       min: 0,
       max: 360,
     },
-    unit: "deg",
+    unit: 'deg',
   },
   {
-    name: "Blur",
-    property: "blur",
+    name: 'Blur',
+    property: 'blur',
     value: 0,
     range: {
       min: 0,
       max: 20,
     },
-    unit: "px",
+    unit: 'px',
   },
 ];
