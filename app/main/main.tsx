@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
-import { useRef, useState } from "react";
-import AboutMe from "./about_me/about_me";
-import FloatingButton from "./floating_button";
-import Labs from "./labs/labs";
-import Projects from "./projects/projects";
+import { useRef, useState } from 'react';
+import AboutMe from './about_me/about_me';
+import FloatingButton from './floating_button';
+import FloatingInfo from './floating_info';
+import Labs from './labs/labs';
+import Projects from './projects/projects';
 
 export interface iItemProps {
   id: number;
@@ -19,9 +20,9 @@ export interface iMenuProps {
 export default function Main() {
   const [isGenerated, setIsGenerated] = useState(false);
   const [isQueGenerated, setIsQueGenerated] = useState(false);
-  const [ansGenerator, setAnsGenerator] = useState("");
-  const [queGenerator, setQueGenerator] = useState("");
-  
+  const [ansGenerator, setAnsGenerator] = useState('');
+  const [queGenerator, setQueGenerator] = useState('');
+
   const refAboutMe = useRef<HTMLDivElement>(null);
   const refProjects = useRef<HTMLDivElement>(null);
   const refLabs = useRef<HTMLDivElement>(null);
@@ -45,6 +46,7 @@ export default function Main() {
         <Labs ref={refLabs} />
       </div>
       <FloatingButton refs={refs} />
+      <FloatingInfo />
     </main>
   );
 }
